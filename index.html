@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Epic Library</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1 class="logo-title">Epic Library</h1>
+      </div>
+      <div class="nav-bar">
+        <h2>All books</h2>
+        <h2>Finished books</h2>
+        <h2>Unfinished books</h2>
+      </div>
+      <div class="add-book">
+        <h2 id="addBook">Add book</h2>
+      </div>
+    </header>
+    <section class="content">
+      <div class="card-container">
+        <div class="card card-1">
+          <p class="card__exit">✖</p>
+          <h2 class="card__title">The Hobbit</h2>
+          <h2 class="card__author">By: J. R. R. Tolkien</h2>
+          <h2 class="card__language">Language: English</h2>
+          <h2 class="card__pages">Number of pages: 1765</h2>
+          <h2 class="card__published">Published: July 12 1960</h2>
+          <div class="toggle">
+            <h2 class="card__toggle">Finished:</h2>
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer></footer>
+    <script src="script/script.js" async defer></script>
+  </body>
+</html>
