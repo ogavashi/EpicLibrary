@@ -28,20 +28,66 @@
       </div>
     </header>
     <section class="content">
-      <div class="card-container">
-        <div class="card card-1">
-          <p class="card__exit">✖</p>
-          <h2 class="card__title">The Hobbit</h2>
-          <h2 class="card__author">By: J. R. R. Tolkien</h2>
-          <h2 class="card__language">Language: English</h2>
-          <h2 class="card__pages">Number of pages: 1765</h2>
-          <h2 class="card__published">Published: July 12 1960</h2>
-          <div class="toggle">
-            <h2 class="card__toggle">Finished:</h2>
-            <label class="switch">
-              <input type="checkbox" />
-              <span class="slider"></span>
-            </label>
+      <div id="for-blur">
+        <div class="card-container">
+          <div class="card card-1">
+            <p class="card__exit">✖</p>
+            <h2 class="card__title">The Hobbit</h2>
+            <h2 class="card__author">By: J. R. R. Tolkien</h2>
+            <h2 class="card__language">Language: English</h2>
+            <h2 class="card__pages">Number of pages: 1765</h2>
+            <h2 class="card__published">Published: July 12 1960</h2>
+            <div class="toggle">
+              <h2 class="card__toggle">Finished:</h2>
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal">
+          <div id="addBookWindow" class="unvisible">
+            <div class="form-new-book">
+              <div class="form-top">
+                <h2 class="form_title">Add new book</h2>
+                <span id="closeAddBookWindow">✖</span>
+              </div>
+              <div class="book-info">
+                <h3>Book title*</h3>
+                <input type="text" placeholder="Title" required id='book-title'/>
+              </div>
+              <div class="book-info">
+                <h3>Book author*</h3>
+                <input type="text" placeholder="Author" required id='book-author' />
+              </div>
+              <div class="book-info">
+                <h3>Number of pages*</h3>
+                <input type="text" placeholder="Pages" required id='number-of-pages' />
+              </div>
+              <div class="book-info">
+                <h3>Language*</h3>
+                <input type="text" placeholder="Language" required id='language' />
+              </div>
+              <div class="book-info">
+                <h3>Publishing date*</h3>
+                <input type="date" required id='publishing-date' />
+              </div>
+              <div class="book-info">
+                <h3>Book status*</h3>
+                <select required id='book-status'> 
+                  <option value="null" disabled selected>
+                    did you read this book?
+                  </option>
+                  <option value="true">i have already read it</option>
+                  <option value="false">still have to read it</option>
+                </select>
+              </div>
+              <div class="book-add-buttons">
+                <button id='add-book'>Add</button>
+                <button id='reset-info'>Reset</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
