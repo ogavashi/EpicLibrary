@@ -1,10 +1,14 @@
+html {
+  min-height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
   background-color: rgb(18, 18, 18);
   color: rgb(245, 245, 245);
   font-family: "Lato", sans-serif;
-  height: 100%;
+  height: 100vh;
+  min-height: 100%;
 }
 header {
   top: 1;
@@ -12,6 +16,10 @@ header {
   display: flex;
   height: 60px;
   width: 100%;
+  position: sticky;
+}
+.content {
+  height: 100vh;
 }
 .logo {
   margin-left: 10px;
@@ -53,7 +61,7 @@ header {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content:center;
 }
 
 .card {
@@ -154,6 +162,7 @@ header {
   background-color: #ccc;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 4px;
 }
 
 .slider:before {
@@ -330,7 +339,7 @@ button {
   width: 100%;
   color: #fff;
   background-color: #0074e4;
-  font-size: 20px; 
+  font-size: 20px;
   text-align: center;
   margin: 10px;
   cursor: pointer;
@@ -342,4 +351,43 @@ button:hover {
 
 button:active {
   background-color: #79b3eb;
+}
+
+#deleteCard {
+  background-color: #202020;
+  border-radius: 4px;
+  width: 100%;
+  justify-content: center;
+}
+
+.deleteBookModal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 20%;
+}
+
+.deleteBook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.deleteBook-buttons {
+  display: flex;
+}
+#sure {
+  width: 100px;
+}
+#notSure {
+  width: 100px;
+}
+.nothing-div {
+  text-align: center;
+  font-size: 40px;
+}
+.nothing-div h1 {
+  padding-bottom: 20px;
 }
