@@ -160,6 +160,7 @@ function addBookToLibrary() {
 
 function getBookfromLocal() {
   myLibrary = JSON.parse(localStorage.getItem("book") || "[]");
+  if (myLibrary.length == 0) showNothing();
   render();
 }
 
