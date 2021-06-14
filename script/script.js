@@ -26,6 +26,11 @@ const bookStatus = document.querySelector("#book-status");
 resetButton.addEventListener("click", resetInput);
 
 showAll.addEventListener("click", () => {
+  bookCards.innerHTML = "";
+  if (myLibrary.length == 0) {
+    showNothing();
+    return;
+  }
   render();
 });
 
