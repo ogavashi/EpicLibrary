@@ -15,6 +15,7 @@ const bookCards = document.querySelector(".card-container");
 const showFinished = document.querySelector("#finished-books");
 const showAll = document.querySelector("#all-books");
 const showUnFinished = document.querySelector("#unfinished-books");
+const modalTitle = document.querySelector(".form_title");
 
 const bookTitle = document.querySelector("#book-title");
 const bookAuthor = document.querySelector("#book-author");
@@ -75,7 +76,19 @@ deleteCardSureButton.addEventListener("click", () => {
 });
 
 addBookButton.addEventListener("click", () => {
-  if (validation()) {
+  let vitalik = myLibrary[currentID];
+  if (vitalik && validation()) {
+    saveChanged(vitalik);
+    resetInput();
+    addBookWindow.classList.remove("visible");
+    addBookWindow.classList.add("unvisible");
+    forBlur.classList.remove("blured");
+    console.log(myLibrary);
+    render();
+    currentID = null; 
+  }
+  else
+  if (validation() && !vitalik) {
     addBookToLibrary();
     resetInput();
     addBookWindow.classList.remove("visible");
@@ -85,6 +98,9 @@ addBookButton.addEventListener("click", () => {
 });
 
 addButton.addEventListener("click", () => {
+  resetInput();
+  modalTitle.innerText = "Add book";
+  addBookButton.innerText = "Add";
   addBookWindow.classList.add("visible");
   forBlur.classList.add("blured");
 });
@@ -134,6 +150,7 @@ function showNothing() {
 
 let myLibrary = [];
 let currentID;
+let update = false;
 getBookfromLocal();
 
 function Book(title, author, language, pages, published, isFinished) {
@@ -182,18 +199,16 @@ function validation() {
     bookStatus.value != "null" &&
     hasNumber(numberOfPages.value)
   ) {
-    if (bookTitle.value.length > 20) {
-      cutInput();
-    }
     return true;
   } else {
     return false;
   }
 }
 
-function cutInput() {
-  bookTitle.value = bookTitle.value.slice(0, 20);
-  bookTitle.value = bookTitle.value.slice(0, bookTitle.value.lastIndexOf(" ")) + "...";
+function cutInput(input) {
+  let newTitle = input.slice(0, 20);
+  let output = newTitle.slice(0, newTitle.lastIndexOf(" ")) + "...";
+  return output;
 }
 
 function hasNumber(myString) {
@@ -208,6 +223,32 @@ function render() {
   });
 }
 
+function changeInfo(element, index) {
+  addBookWindow.classList.add("visible");
+  forBlur.classList.add("blured");
+  modalTitle.innerText = "Update books";
+  addBookButton.innerText = "Update book";
+  bookTitle.value = element.title;
+  bookAuthor.value = element.author;
+  numberOfPages.value = element.pages;
+  language.value = element.language;
+  publishingDate.value = element.published;
+  bookStatus.value = element.isFinished;
+  currentID = index;
+  render();
+}
+
+function saveChanged(vitalik) {
+  let ourBook = vitalik;
+  ourBook.title = bookTitle.value;
+  ourBook.author = bookAuthor.value;
+  ourBook.pages = numberOfPages.value; 
+  ourBook.language = language.value;
+  ourBook.published = publishingDate.value;
+  ourBook.isFinished = bookStatus.value;
+  return ourBook;
+}
+
 function draw(element, index) {
   let newBook = document.createElement("div");
   newBook.classList.add("card");
@@ -219,10 +260,13 @@ function draw(element, index) {
     forBlur.classList.add("blured");
     currentID = index;
   });
+  newBook.addEventListener("dblclick", () => changeInfo(element, index));
   deleteThis.classList.add("card__exit");
   let cardBookTitle = document.createElement("h2");
   cardBookTitle.classList.add("card__title");
-  cardBookTitle.innerText = element.title;
+  if (element.title.length > 20) {
+    cardBookTitle.innerText = cutInput(element.title);
+  } else cardBookTitle.innerText = element.title;
   deleteThis.innerText = "✖";
   let cardBookAuthor = document.createElement("h2");
   cardBookAuthor.classList.add("card__author");
